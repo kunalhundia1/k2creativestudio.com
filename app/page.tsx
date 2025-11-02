@@ -235,7 +235,7 @@ function Testimonials() {
         "Their social media strategy finally gave us consistency and results. Our inbound demos doubled in three months.",
     },
     {
-      name: "Mahek – Eeriya owner",
+      name: "Aashna – Esme Crystals Owner",
       quote:
         "Fast, collaborative, and creative. From brand graphics to web pages, everything feels cohesive and on-brand.",
     },

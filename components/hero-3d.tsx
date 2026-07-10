@@ -1,7 +1,7 @@
 'use client'
 
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls, PerspectiveCamera, Environment } from '@react-three/drei'
+import { OrbitControls, PerspectiveCamera } from '@react-three/drei'
 import { useRef, useEffect, useState } from 'react'
 import * as THREE from 'three'
 import { Button } from '@/components/ui/button'
@@ -82,12 +82,11 @@ export default function Hero3D() {
     <section className="relative w-full overflow-hidden">
       {/* 3D Canvas */}
       <div className="absolute inset-0 w-full h-96 md:h-screen">
-        <Canvas>
+        <Canvas style={{ background: '#0a0a0a' }}>
           <PerspectiveCamera makeDefault position={[0, 0, 8]} />
           <Lights />
           <RotatingShape />
           <FloatingCube />
-          <Environment preset="night" />
           <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={2} />
         </Canvas>
       </div>

@@ -1,24 +1,20 @@
+'use client'
+
 import Link from "next/link"
-import Image from "next/image" // add Next.js Image import for logo usage
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import {
-  Megaphone,
-  MousePointerClick,
-  Search,
-  Palette,
-  MonitorSmartphone,
-  BarChart3,
-  Star,
-  CheckCircle2,
-} from "lucide-react"
+import { Star } from "lucide-react"
+import dynamic from "next/dynamic"
+
+const Hero3D = dynamic(() => import("@/components/hero-3d"), { ssr: false })
+const Services3D = dynamic(() => import("@/components/services-3d"), { ssr: false })
 
 export default function Page() {
   return (
     <main className="min-h-dvh">
       <Navbar />
-      <Hero />
-      <Services />
+      <Hero3D />
+      <Services3D />
       <Process />
       <Testimonials />
       <Cta />
@@ -75,52 +71,7 @@ function Navbar() {
   )
 }
 
-function Hero() {
-  return (
-    <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
-      <div className="grid gap-8 md:grid-cols-2 md:gap-12 items-center">
-        <div className="space-y-6">
-          <h1 className="font-serif text-pretty text-3xl md:text-5xl font-semibold">
-            Grow faster with performance marketing and standout design
-          </h1>
-          <p className="text-muted-foreground max-w-prose">
-            K2 Creative Studio helps brands scale with social media management, Meta & Google ads, and high-converting
-            design for graphics and websites.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3">
-            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:opacity-90">
-              <a href="mailto:k2creativestudio@gmail.com">Book a free strategy call</a>
-            </Button>
-            <Button asChild size="lg" variant="outline">
-              <a href="#services">See our services</a>
-            </Button>
-          </div>
-          <ul className="flex flex-wrap items-center gap-4 pt-2 text-sm text-muted-foreground">
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="size-4 text-primary" aria-hidden />
-              ROI-focused campaigns
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="size-4 text-primary" aria-hidden />
-              Design that converts
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="size-4 text-primary" aria-hidden />
-              Transparent reporting
-            </li>
-          </ul>
-        </div>
-        <div className="w-full">
-          <img
-            src="/dashboard-analytics-and-creative-design-mockups.png"
-            alt="Marketing analytics dashboard and creative design mockups"
-            className="w-full rounded-lg border"
-          />
-        </div>
-      </div>
-    </section>
-  )
-}
+
 
 function Services() {
   const services = [
@@ -205,17 +156,17 @@ function Process() {
       </div>
       <div className="mt-8 grid gap-4 md:grid-cols-2">
         {steps.map((s) => (
-          <Card key={s.step}>
-            <CardHeader className="flex flex-row items-start gap-3">
-              <div className="text-sm font-medium text-primary" aria-hidden>
+          <div key={s.step} className="p-6 rounded-lg border bg-card">
+            <div className="flex items-start gap-3">
+              <div className="text-sm font-medium text-accent" aria-hidden>
                 {s.step}
               </div>
-              <CardTitle className="text-base">{s.title}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">{s.text}</p>
-            </CardContent>
-          </Card>
+              <div>
+                <h3 className="font-serif text-base font-semibold mb-2">{s.title}</h3>
+                <p className="text-sm text-muted-foreground">{s.text}</p>
+              </div>
+            </div>
+          </div>
         ))}
       </div>
     </section>
@@ -248,21 +199,17 @@ function Testimonials() {
       </div>
       <div className="mt-8 grid gap-4 md:grid-cols-3">
         {items.map((t) => (
-          <Card key={t.name}>
-            <CardHeader className="space-y-1">
-              <div className="flex items-center gap-1 text-accent" aria-hidden>
-                <Star className="size-4 fill-current" />
-                <Star className="size-4 fill-current" />
-                <Star className="size-4 fill-current" />
-                <Star className="size-4 fill-current" />
-                <Star className="size-4 fill-current" />
-              </div>
-              <CardTitle className="text-base">{t.name}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">&ldquo;{t.quote}&rdquo;</p>
-            </CardContent>
-          </Card>
+          <div key={t.name} className="p-6 rounded-lg border bg-card">
+            <div className="flex items-center gap-1 text-accent mb-3" aria-hidden>
+              <Star className="size-4 fill-current" />
+              <Star className="size-4 fill-current" />
+              <Star className="size-4 fill-current" />
+              <Star className="size-4 fill-current" />
+              <Star className="size-4 fill-current" />
+            </div>
+            <h3 className="font-serif text-base font-semibold mb-2">{t.name}</h3>
+            <p className="text-sm text-muted-foreground">&ldquo;{t.quote}&rdquo;</p>
+          </div>
         ))}
       </div>
     </section>

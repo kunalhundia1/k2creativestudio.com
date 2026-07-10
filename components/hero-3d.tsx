@@ -106,7 +106,7 @@ export default function Hero3D() {
               <Button asChild size="lg" className="bg-accent text-accent-foreground hover:opacity-90">
                 <a href="mailto:k2creativestudio@gmail.com">Book a free strategy call</a>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+              <Button asChild size="lg" className="bg-accent/20 text-accent border-2 border-accent hover:bg-accent/30">
                 <a href="#services">See our services</a>
               </Button>
             </div>
